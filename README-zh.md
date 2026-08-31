@@ -2,6 +2,10 @@
 
 一个 MCP 服务 `pivision`，覆盖「视觉识别 + 图像生成」两大能力域，对外暴露 **6 个工具**，一工具一流水线、配置互相解耦。生图适配器按「流水线前缀」隔离环境变量，视觉适配器支持图片 / 视频双分支与自动回退，生图流水线支持命名实例与多 Key 池。
 
+> **💡 完全免费**：pivision 内置的视觉和生图两个后端 API **目前都免费**，额度非常充足，个人使用和大型项目都够用。你只需要注册账号、获取自己的 API Key 即可（申请入口见[第 2 节快速开始](#2-快速开始)）。
+>
+> 把 `r-pic` / `r-vid` 想成给 AI 模型装上**「眼睛」**——从此 AI 助手能真正"看"你递给它的图片和视频，描述内容、回答问题。
+
 ---
 
 ## 1 简介与能力总览
@@ -66,6 +70,15 @@ cp .env.example .env
 ```
 
 按需填写各段密钥：视觉填 `VISION_API_KEY`（视频未单独配置时自动复用），生图填各段 `*_API_KEYS`（可逗号分隔多把）。未配 Key 的流水线调用时返回 `❌ 未配置 {xxx_API_KEYS}`，不会误发请求。
+
+**API Key 申请（免费）**：两个后端 API 目前都免费、额度充足，注册即可拿 Key：
+
+| 用途 | 平台 | 申请入口 | 填到 .env 的哪个字段 |
+|---|---|---|---|
+| 视觉（r-pic / r-vid） | dots（小红书 Dots Studio） | https://dots.ai/platform —— 手机号登录后，在 **API Keys** 页创建 | `VISION_API_KEY` |
+| 生图（g-pic / i-pic / p-pic） | 商汤日日新 SenseNova | https://platform.sensenova.cn —— 注册 + 手机验证后，**控制台 → API Keys** 创建 `sk-` 开头的密钥 | `GEN_IMAGE_API_KEYS` / `GEN_INFOGRAPH_API_KEYS` / `EDIT_IMAGE_API_KEYS` |
+
+> 两个平台都兼容 OpenAI 协议。如果你已有其他 OpenAI 兼容的密钥（OpenAI / DeepSeek / 月之暗面 / 本地网关等），把 `VISION_BASE_URL` / `*_BASE_URL` 指到自己的端点、复用现有密钥即可，无需额外注册。
 
 **3. 注册 MCP**：把 `pic-config.json`（或 `mcp-register.json`）的内容合并进客户端的 MCP 配置，`command` 指向项目 `.venv/bin/python`，`args[0]` 指向 `pivision.py`：
 

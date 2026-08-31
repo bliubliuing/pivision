@@ -4,7 +4,11 @@
 
 pivision is a plug-and-play "see images + draw images" toolbox. It recognizes what's inside a local image or video link, and generates images from a text description — with no coding required to use it.
 
-- **Vision (see)**: describe a local picture, parse a video URL
+> **💡 Free to use** — both the vision and image-generation APIs backed into pivision are **currently free**, with generous quotas that are enough for personal use and large projects. You only need to register and get your own API keys (see [Getting API Keys](#getting-api-keys)).
+>
+> Think of `r-pic` / `r-vid` as **giving your LLM "eyes"** — your AI assistant can finally see the images and videos you hand it, describe them, and answer questions about them.
+
+- **Vision (see)**: describe a local picture, parse a video URL — the model's "eyes"
 - **Generation (draw)**: text-to-image, infographic-to-image, image-to-image (reference + instruction)
 - **Batch**: run hundreds of tasks from a simple text file with resume support
 
@@ -79,6 +83,17 @@ cp .env.example .env
 ```
 
 Fill in your keys: vision → `VISION_API_KEY` (video falls back to it automatically when empty); generation → each section's `*_API_KEYS` (comma-separated for multiple keys). Pipelines without keys return `❌ 未配置 {xxx_API_KEYS}` instead of making wrong requests.
+
+### 2.5 Get API Keys (free)
+
+Both backed APIs are **currently free** with generous quotas — you only register once and grab your keys:
+
+| Pipeline | Provider | Where to register | Key to fill in `.env` |
+|---|---|---|---|
+| Vision (`r-pic` / `r-vid`) | dots (Xiaohongshu Dots Studio) | https://dots.ai/platform — sign in with phone number, then create a key on the **API Keys** page | `VISION_API_KEY` |
+| Generation (`g-pic` / `i-pic` / `p-pic`) | SenseNova (SenseTime) | https://platform.sensenova.cn — register + phone verify, then **Console → API Keys** → create an `sk-` key | `GEN_IMAGE_API_KEYS` / `GEN_INFOGRAPH_API_KEYS` / `EDIT_IMAGE_API_KEYS` |
+
+> Both providers are OpenAI-compatible. If you already have another OpenAI-compatible key (OpenAI / DeepSeek / Moonshot / local gateway…), point `VISION_BASE_URL` / `*_BASE_URL` to your own endpoint and reuse your existing key — no extra registration needed.
 
 ### 3a. Use as MCP (for AI assistants)
 
