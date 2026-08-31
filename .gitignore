@@ -1,0 +1,14 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+*.egg-info/
+
+# 环境变量（绝不入库真实 Key）
+.env
+
+# 运行时产物
+art/
+.bgen_progress.json
+pivision_batch_results.txt
+history.json

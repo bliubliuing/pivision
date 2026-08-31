@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "mcpServers": {
+    "pivision": {
+      "command": "/home/my/work/0proj/mcp-bulid/zijian/pivision/.venv/bin/python",
+      "args": ["/home/my/work/0proj/mcp-bulid/zijian/pivision/pivision.py"]
+    }
+  }
+}

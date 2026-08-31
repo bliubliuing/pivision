@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "meta": {
+    "name": "pivision MCP",
+    "description": "pivision — MCP 视觉与图像生成服务（6 工具：r-pic/r-vid/g-pic/i-pic/p-pic/b-gen）",
+    "author": "zijian",
+    "requiresLicense": false
+  },
+  "mcpServers": {
+    "pivision": {
+      "command": "/home/my/work/0proj/mcp-bulid/zijian/pivision/.venv/bin/python",
+      "args": ["/home/my/work/0proj/mcp-bulid/zijian/pivision/pivision.py"],
+      "agents": ["codebuddy"]
+    }
+  }
+}
